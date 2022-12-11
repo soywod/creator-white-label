@@ -1,0 +1,18 @@
+@import "../theme.scss";
+
+.spinner {
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba($white, 0.9);
+  z-index: 2;
+  opacity: 0;
+  transition: 250ms opacity;
+  pointer-events: none;
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: all;
+}

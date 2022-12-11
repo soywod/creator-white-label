@@ -1,0 +1,60 @@
+@import "./theme.scss";
+
+.container {
+  background: $white;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav    main"
+    "nav    footer";
+  grid-template-columns: 8rem minmax(0, 1fr);
+  grid-template-rows: 4rem minmax(0, 1fr) 4rem;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+
+  @include media(sm) {
+    display: none;
+  }
+}
+
+.smallDeviceWarning {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+
+  @include media(md) {
+    display: flex;
+    background-color: $yellow-ff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+}
+
+.header {
+  background-color: $white;
+  border-bottom: 1px solid $grey-d6;
+  color: $grey-13;
+  grid-area: header;
+  grid-column-gap: 0.25rem;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 20% 20% 60%;
+  box-shadow: 0 0 0.5rem rgba($grey-13, 0.2);
+  padding: 0.5rem 1rem;
+}
+
+.logo {
+  height: 100%;
+  padding: 0.25rem;
+  box-sizing: border-box;
+}
+
+.main {
+  align-items: center;
+  background-color: $blue-f1;
+  display: flex;
+  grid-area: main;
+  justify-content: center;
+}

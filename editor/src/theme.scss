@@ -1,0 +1,36 @@
+$white: #ffffff;
+$black: #000000;
+
+$grey-13: #131021;
+$grey-e8: #e8e9ea;
+$grey-ed: #ededed;
+$grey-d6: #d6d6d6;
+$grey-81: #818181;
+
+// Canvas background
+$blue-f1: #f1f3f9;
+
+// Main blue
+$blue-32: #3240ff;
+
+$yellow-f1: #f1eee8;
+$yellow-ff: #f7c629;
+$red-ff: #ff0000;
+
+$green-7e: #7ec993;
+$violet-ac: #ac93c9;
+$violet-c9: #c989c9;
+
+@mixin media($size) {
+  @if $size == sm {
+    @media (max-width: 575px) {
+      @content;
+    }
+  }
+
+  @if $size == md {
+    @media (max-width: 1199px) {
+      @content;
+    }
+  }
+}

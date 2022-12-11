@@ -1,0 +1,107 @@
+@import "../../theme.scss";
+
+.tooltip {
+  width: 12rem;
+}
+
+.tooltipContent {
+  padding: 0;
+  display: grid;
+  grid-row-gap: 1px;
+  background: $grey-d6;
+  grid-auto-flow: row;
+  border-radius: 0.25rem;
+  border: 1px solid $grey-d6;
+  box-shadow: 0 0.2rem 0.5rem rgba($grey-13, 0.15);
+}
+
+.customColor {
+  color: $grey-13;
+  background: lighten($grey-e8, 3%);
+  border: none;
+  font-family: Orkney;
+  padding: 0.5rem 0.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  justify-items: center;
+  cursor: pointer;
+  transition: 100ms background;
+  border-radius: 0 0 0.25rem 0.25rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: $grey-e8;
+  }
+}
+
+.predefinedColor {
+  color: $grey-13;
+  background: lighten($grey-e8, 3%);
+  border: none;
+  font-family: Orkney;
+  padding: 0.5rem 0.5rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  justify-items: center;
+  cursor: pointer;
+  transition: 100ms background;
+  border-radius: 0 0 0.25rem 0.25rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: $grey-e8;
+  }
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: $grey-13;
+}
+
+.grid {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-auto-flow: inherit;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(1.75rem, 1fr));
+  padding: 0.5rem;
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.grid::before {
+  content: "";
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  padding-bottom: 100%;
+  width: 0;
+}
+
+.grid > *:first-child {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+}
+
+.gridItem {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50%;
+  transition-duration: 150ms;
+  transition-property: opacity;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

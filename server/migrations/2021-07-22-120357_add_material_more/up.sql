@@ -1,0 +1,2 @@
+ALTER TABLE materials
+ADD COLUMN "more" TEXT DEFAULT NULL;

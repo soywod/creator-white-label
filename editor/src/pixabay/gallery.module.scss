@@ -1,0 +1,113 @@
+@import "../theme.scss";
+
+.logoContainer {
+  display: inline-grid;
+  justify-items: center;
+  height: 2rem;
+  width: 100%;
+}
+
+.logoLink {
+  display: inline-block;
+}
+
+.logo {
+  width: 5rem;
+}
+
+.search {
+  align-content: center;
+  display: grid;
+  grid-row-gap: 0.5rem;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  margin-bottom: 0.5rem;
+}
+
+.searchInput {
+  border: 2px solid $grey-e8;
+  border-right: none;
+  border-radius: 0.25rem 0 0 0.25rem;
+  font-size: 0.8rem;
+  font-family: Orkney;
+  padding: 0.5rem 1rem;
+  transition-duration: 100ms;
+  transition-property: border, box-shadow;
+
+  &:not(:disabled):hover,
+  &:not(:disabled):focus {
+    outline: none;
+    border-color: $blue-32;
+    border-right-color: $grey-e8;
+
+    & + .searchSubmit {
+      border-color: $blue-32;
+      border-left-color: $grey-e8;
+    }
+  }
+}
+
+.searchSubmit {
+  border: none;
+  background: $grey-e8;
+  border-radius: 0 0.25rem 0.25rem 0;
+  transition-duration: 100ms;
+  transition-property: border, background;
+  border: 2px solid $grey-e8;
+  border-left: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.searchSubmitIcon {
+  color: $grey-81;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.itemContainer {
+  align-items: center;
+  background: $grey-81;
+  display: grid;
+  justify-items: center;
+  transition-duration: 150ms;
+  transition-property: opacity;
+  border-radius: 0.25rem;
+
+  > * {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.itemBtn {
+  border: none;
+  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+.item {
+  display: grid;
+  border-radius: 0.25rem;
+}
+
+.itemSpinner {
+  width: 2rem;
+  height: 2rem;
+}
+
+.footer {
+  align-items: center;
+  display: grid;
+  justify-items: center;
+  padding: 0.5rem;
+}

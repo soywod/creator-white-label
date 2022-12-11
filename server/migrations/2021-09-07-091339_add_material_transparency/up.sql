@@ -1,0 +1,2 @@
+ALTER TABLE materials
+ADD COLUMN "transparency" INTEGER NOT NULL DEFAULT 0;

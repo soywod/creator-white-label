@@ -1,0 +1,35 @@
+.container {
+  height: 100vh;
+}
+
+.submit {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 1rem;
+  grid-area: submit;
+  align-items: center;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background: #ffd906;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 0.5rem;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.btnIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.link {
+  display: flex;
+}

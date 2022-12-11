@@ -1,0 +1,554 @@
+@import "../theme.scss";
+
+.nav {
+  background: $grey-e8;
+  display: grid;
+  grid-area: nav;
+  grid-auto-rows: min-content;
+  justify-content: center;
+  grid-row-gap: 1rem;
+  padding: 1rem;
+  z-index: 4;
+  border-right: 1px solid $grey-d6;
+  box-shadow: 0 0 0.5rem rgba($grey-13, 0.2);
+
+  @include media(md) {
+    grid-row-gap: 0.5rem;
+  }
+}
+
+.item {
+  border: none;
+  background: none;
+  margin: 0;
+  color: $grey-13;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  position: relative;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  font-family: Orkney;
+
+  &:hover .iconContainer {
+    background: $grey-d6;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  @include media(md) {
+    font-size: 0.8rem;
+  }
+}
+
+.iconContainer {
+  width: 4rem;
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -1px 4px 3px rgba($grey-13, 0.3);
+  background: linear-gradient($grey-ed, $grey-e8);
+  margin-bottom: 0.25rem;
+  border: 2px solid $white;
+  transition: 100ms background linear;
+  position: relative;
+
+  @include media(md) {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+.icon {
+  color: $grey-13;
+  height: 2rem;
+  width: 2rem;
+  transition: 100ms color linear;
+
+  @include media(md) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.iconActive {
+  color: $blue-32;
+}
+
+.iconSuffix {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.separator {
+  border-top: 1px solid $grey-d6;
+  border-bottom: 1px solid $white;
+}
+
+.drawerContainer {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 2rem;
+  grid-area: nav;
+  opacity: 0;
+  background: $yellow-f1;
+  color: $grey-13;
+  border-right: 1px solid $grey-d6;
+  z-index: 3;
+  width: 21rem;
+  transition-duration: 500ms;
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0, 0.5, 0, 1);
+  transform: translateX(0);
+  pointer-events: none;
+  box-shadow: 0 0 0.5rem rgba($grey-13, 0.2);
+
+  &.visible {
+    opacity: 1;
+    transform: translateX(8rem);
+    pointer-events: all;
+  }
+}
+
+.drawer {
+  position: relative;
+  padding: 2rem 1rem 1rem 1rem;
+  scrollbar-color: rgba($grey-13, 0.25) transparent;
+  scrollbar-width: thin;
+  overflow-y: overlay;
+
+  &::-webkit-scrollbar {
+    width: 0.75rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($grey-13, 0.25);
+    border: 3px solid $yellow-f1;
+    border-radius: 6px;
+  }
+}
+
+.drawerCloseTop {
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.drawerCloseTopIcon {
+  width: 2rem;
+  height: 2rem;
+  color: $grey-81;
+  transition: 100ms color linear;
+
+  &:hover {
+    color: $red-ff;
+  }
+}
+
+.drawerCloseBottom {
+  border: none;
+  color: $grey-13;
+  font-size: 1rem;
+  border-top: 1px solid $grey-d6;
+  font-family: Orkney;
+  background: $grey-e8;
+  cursor: pointer;
+}
+
+.drawerTextTitle {
+  margin: 1.5rem 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-family: Orkney;
+  color: $grey-13;
+}
+
+.drawerTextFontSize {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 4rem;
+  grid-column-gap: 1rem;
+}
+
+.drawerTextFontSizeRangeInput {
+  margin: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.drawerTextFontSizeNumberInput {
+  border: 2px solid $grey-d6;
+  background: $white;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  transition-duration: 100ms;
+  transition-property: border, box-shadow;
+  color: $grey-13;
+  font-size: 0.9rem;
+  font-family: Orkney;
+
+  &:not(:disabled):hover {
+    border-color: $blue-32;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $blue-32;
+    // box-shadow: 0 0 0 1px $blue-32;
+  }
+
+  &:disabled {
+    background-color: hsl(0, 0%, 95%);
+  }
+}
+
+.drawerTextFontFamily {
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.drawerTextFontFamilyToopltip {
+  opacity: 0;
+}
+
+.drawerTextFontFamilyToopltipVisible {
+  opacity: 1;
+}
+
+.textDrawerText {
+  display: flex;
+  flex-direction: column;
+}
+
+.textDrawerTextInput {
+  border: 2px solid $grey-d6;
+  border-bottom: none;
+  width: 100%;
+  background: $white;
+  border-radius: 0.25rem 0.25rem 0 0;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  resize: vertical;
+  transition-duration: 100ms;
+  transition-property: border, box-shadow;
+  color: $grey-13;
+  font-size: 0.9rem;
+  font-family: Orkney;
+
+  &:not(:disabled):hover {
+    border-color: $blue-32;
+
+    & + .textDrawerTextTools {
+      border-color: $blue-32;
+      border-top-color: $grey-d6;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $blue-32;
+
+    & + .textDrawerTextTools {
+      border-color: $blue-32;
+      border-top-color: $grey-d6;
+    }
+  }
+
+  &:disabled {
+    background-color: hsl(0, 0%, 95%);
+  }
+}
+
+.textDrawerTextTools {
+  display: flex;
+  padding: 0.25rem;
+  background: $grey-e8;
+  border-radius: 0 0 0.25rem 0.25rem;
+  border: 2px solid $grey-d6;
+  border-top-width: 1px;
+  justify-content: space-between;
+}
+
+.textDrawerOtherTools {
+  display: grid;
+  margin-top: 1.5rem;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.textDrawerOtherTool {
+  padding: 0.75rem 0.5rem;
+}
+
+div.colorPalette {
+  padding: 0 2rem;
+  margin: 2rem 0 1.5rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(2rem, 1fr));
+  grid-gap: 0.5rem 1rem;
+}
+
+.colorPaletteBtn {
+  border-radius: 50%;
+
+  svg {
+    width: auto;
+    height: auto;
+    padding: 0;
+  }
+}
+
+.drawerFileUploadButton {
+  background: $blue-32;
+  border-radius: 0.25rem;
+  align-items: center;
+  border: 1px solid darken($blue-32, 10%);
+  cursor: pointer;
+  color: $white;
+  display: flex;
+  font-size: 1rem;
+  font-weight: bold;
+  justify-content: center;
+  margin: 2rem 0 1rem 0;
+  transition: 100ms background;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+
+  &:hover {
+    background: darken($blue-32, 5%);
+  }
+}
+
+.drawerFileUploadButtonIcon {
+  height: 25px;
+  margin-right: 5px;
+  width: 25px;
+}
+
+.drawerFileFiles {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.drawerFileFileContainer {
+  align-items: center;
+  display: inline-block;
+  font-family: Orkney;
+  border-radius: 0.25rem;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: 1px solid $grey-d6;
+  cursor: pointer;
+
+  &:hover .drawerFileFileActions {
+    opacity: 1;
+  }
+}
+
+.drawerFileFile {
+  align-items: center;
+  display: grid;
+  grid-column-gap: 15px;
+  grid-template-columns: 100px auto;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  height: 75px;
+  padding: 5px;
+  text-align: left;
+  transition-duration: 100ms;
+  transition-property: background;
+}
+
+.drawerFileFileActions {
+  opacity: 0;
+  position: absolute;
+  font-family: Orkney;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  padding: 0.25rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  text-align: left;
+  width: auto;
+  opacity: 0;
+  transition: 100ms opacity;
+}
+
+.drawerFileFileAction {
+  background: $blue-32;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Orkney;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  text-decoration: none;
+  width: 2rem;
+  height: 2rem;
+
+  &[href="#delete"] {
+    background: $red-ff;
+  }
+}
+
+.drawerFileFileActionIcon {
+  width: 0.85rem;
+  color: $white;
+}
+
+.drawerFileThumbnail {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  width: 100%;
+}
+
+.drawerFileThumbnailLoader {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  justify-self: center;
+}
+
+.drawerFileFilePreview {
+  box-shadow: 0 0 0.5rem rgba($grey-13, 0.2);
+  margin-left: 1rem;
+  max-height: 12rem;
+  z-index: 1;
+  border-radius: 0.25rem;
+}
+
+.drawerFileFilename {
+  align-self: end;
+  color: $grey-13;
+  font-size: 13px;
+  font-weight: bold;
+  grid-column: 2;
+  grid-row: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.drawerFileFileInfos {
+  align-self: start;
+  color: $grey-13;
+  font-size: 12px;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.modalContainer {
+  display: grid;
+  grid-column: 2;
+  grid-row: 2 / 4;
+  opacity: 0;
+  background: $yellow-f1;
+  color: $grey-13;
+  border-right: 1px solid $grey-d6;
+  z-index: 3;
+  transition-duration: 500ms;
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0, 0.5, 0, 1);
+  transform: translateX(-8rem);
+  pointer-events: none;
+  box-shadow: 0 0 0.5rem rgba($grey-13, 0.2);
+
+  &.visible {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+.modal {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 4rem;
+  position: relative;
+  padding: 0;
+  scrollbar-color: rgba($grey-13, 0.25) transparent;
+  scrollbar-width: thin;
+  overflow-y: overlay;
+
+  &::-webkit-scrollbar {
+    width: 0.75rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($grey-13, 0.25);
+    border: 3px solid $yellow-f1;
+    border-radius: 6px;
+  }
+}
+
+.modalCloseTop {
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.modalCloseTopIcon {
+  width: 2rem;
+  height: 2rem;
+  color: $grey-81;
+  transition: 100ms color linear;
+
+  &:hover {
+    color: $red-ff;
+  }
+}
+
+.color {
+  position: relative;
+  background: none;
+  border-color: darken($white, 15%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    height: 3px;
+    left: 0;
+    transform-origin: center center;
+    transform: rotateZ(-45deg);
+    background-color: $red-ff;
+  }
+}

@@ -1,0 +1,74 @@
+@import "../theme.scss";
+
+.main {
+  align-items: center;
+  background-color: $yellow-f1;
+  display: grid;
+  grid-area: main;
+  justify-content: center;
+  background-size: cover;
+}
+
+.tooltip {
+  pointer-events: none;
+  border-radius: 0.25rem;
+  transition: 250ms opacity cubic-bezier(0, 0.5, 0, 1);
+  z-index: 3;
+  opacity: 0;
+
+  &[data-visible] {
+    opacity: 1;
+    pointer-events: all;
+
+    & > .tooltipContent {
+      transform: scale(1) translateY(0);
+    }
+  }
+}
+
+.tooltipContent {
+  background: $white;
+  box-shadow: 0 0.2rem 0.5rem rgba($grey-13, 0.15);
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 0.25rem;
+  color: $grey-13;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid $grey-d6;
+  transform: scale(0.8) translateY(0.5rem);
+  transition: 250ms transform cubic-bezier(0, 0.5, 0, 1);
+}
+
+.tool {
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0.25rem;
+  background: none;
+  display: flex;
+  cursor: pointer;
+  transition: background 100ms linear;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: $grey-d6;
+  }
+}
+
+.toolIcon {
+  padding: 0.2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.width,
+.height {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+}

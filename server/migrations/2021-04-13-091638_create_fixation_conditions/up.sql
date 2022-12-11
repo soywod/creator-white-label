@@ -1,0 +1,25 @@
+CREATE TABLE fixation_conditions (
+  "id" SERIAL PRIMARY KEY,
+  "fixation_id" INTEGER NOT NULL,
+  "shape_id" INTEGER NOT NULL,
+  "area_min" INTEGER DEFAULT NULL,
+  "area_max" INTEGER DEFAULT NULL,
+  "padding_h" INTEGER DEFAULT NULL,
+  "padding_v" INTEGER DEFAULT NULL,
+  "pos_tl" BOOLEAN DEFAULT FALSE,
+  "pos_tc" BOOLEAN DEFAULT FALSE,
+  "pos_tr" BOOLEAN DEFAULT FALSE,
+  "pos_cl" BOOLEAN DEFAULT FALSE,
+  "pos_cr" BOOLEAN DEFAULT FALSE,
+  "pos_bl" BOOLEAN DEFAULT FALSE,
+  "pos_bc" BOOLEAN DEFAULT FALSE,
+  "pos_br" BOOLEAN DEFAULT FALSE,
+  FOREIGN KEY ("fixation_id")
+    REFERENCES fixations ("id")
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  FOREIGN KEY ("shape_id")
+    REFERENCES shapes ("id")
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+);

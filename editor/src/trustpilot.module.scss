@@ -1,0 +1,29 @@
+@import "./theme";
+
+.container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.widget {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.fader {
+  grid-column: 1;
+  grid-row: 1;
+  opacity: 1;
+  background: $white;
+  transition: 1s opacity;
+  justify-self: stretch;
+  align-self: stretch;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hidden {
+  opacity: 0;
+}

@@ -1,0 +1,18 @@
+ALTER TABLE fixations
+ALTER COLUMN "diameter" TYPE REAL,
+ALTER COLUMN "drill_diameter" TYPE REAL;
+
+ALTER TABLE materials
+ALTER COLUMN "min_width" TYPE REAL,
+ALTER COLUMN "min_height" TYPE REAL,
+ALTER COLUMN "max_width" TYPE REAL,
+ALTER COLUMN "max_height" TYPE REAL,
+ALTER COLUMN "weight" TYPE REAL;
+
+ALTER TABLE fixation_conditions
+ALTER COLUMN "padding_h" TYPE REAL,
+ALTER COLUMN "padding_v" TYPE REAL;
+
+ALTER TABLE dimensions
+ALTER COLUMN "width" TYPE REAL,
+ALTER COLUMN "height" TYPE REAL;

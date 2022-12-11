@@ -1,0 +1,68 @@
+@import "../theme.scss";
+
+.button {
+  padding: 0.25rem;
+  margin: 0;
+  border: none;
+  border-radius: 0.25rem;
+  display: inline-grid;
+  grid-gap: 0.25rem;
+  justify-items: center;
+  align-items: center;
+  background: none;
+  cursor: pointer;
+  transition: background 100ms linear;
+  font-size: 0.75rem;
+  min-width: 2rem;
+  min-height: 2rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: $grey-d6;
+  }
+}
+
+.active {
+  background: $grey-d6;
+}
+
+.icon {
+  height: 1rem;
+  display: inline-block;
+  color: $grey-13;
+}
+
+.tooltip {
+  pointer-events: none;
+  border-radius: 0.25rem;
+  transition: 100ms opacity cubic-bezier(0, 0.5, 0, 1);
+  z-index: 3;
+  opacity: 0;
+}
+
+:not(.tooltip) .tooltip[data-visible] {
+  opacity: 1;
+  pointer-events: all;
+
+  & > .tooltipContent {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.tooltipContent {
+  background: $white;
+  box-shadow: 0 0.2rem 0.5rem rgba($grey-13, 0.15);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(max-content, 1fr);
+  grid-column-gap: 0.25rem;
+  color: $grey-13;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid $grey-d6;
+  transform: scale(0.8) translateY(0.5rem);
+  transition: 100ms transform cubic-bezier(0, 0.5, 0, 1);
+}

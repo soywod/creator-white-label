@@ -1,0 +1,171 @@
+@import "../theme.scss";
+
+.container {
+  background-color: $white;
+  color: $grey-13;
+  grid-area: footer;
+  grid-column-gap: 1rem;
+  display: grid;
+  grid-template-areas:
+    "product  quantity total-tax-excl total-tax-excl-discounted submit chat"
+    "fixation quantity total-tax-incl total-tax-incl-discounted submit chat";
+  grid-template-columns: 30% 15% max-content max-content auto 25%;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  border-top: 1px solid $grey-d6;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+.product {
+  grid-area: product;
+  align-self: end;
+  font-weight: bold;
+}
+
+.fixation {
+  grid-area: fixation;
+  align-self: start;
+  font-size: 0.7rem;
+}
+
+.quantity {
+  grid-area: quantity;
+  display: flex;
+}
+
+@mixin quantity {
+  border: 1px solid $grey-d6;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-family: Orkney;
+  text-align: center;
+  width: 2rem;
+  line-height: 1.25rem;
+  height: 2rem;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1.25rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.quantitySubBtn {
+  @include quantity;
+  border-radius: 0.25rem 0 0 0.25rem;
+  background: $grey-e8;
+  cursor: pointer;
+  transition: 100ms background;
+
+  &:hover {
+    background: darken($grey-e8, 2%);
+  }
+}
+
+.quantityAddBtn {
+  @include quantity;
+  border-radius: 0 0.25rem 0.25rem 0;
+  background: $grey-e8;
+  cursor: pointer;
+  transition: 100ms background;
+
+  &:hover {
+    background: darken($grey-e8, 2%);
+  }
+}
+
+.quantityInput {
+  @include quantity;
+  border-left: none;
+  border-right: none;
+  -moz-appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.totalTaxExcl {
+  font-weight: bold;
+  align-self: end;
+  grid-area: total-tax-excl;
+}
+
+.totalTaxIncl {
+  grid-area: total-tax-incl;
+  align-self: start;
+  font-size: 0.7rem;
+}
+
+.totalTaxInclDiscounted {
+  grid-area: total-tax-incl-discounted;
+  align-self: start;
+  font-size: 0.7rem;
+  color: $red-ff;
+}
+
+.totalTaxExclDiscounted {
+  font-weight: bold;
+  align-self: end;
+  grid-area: total-tax-excl-discounted;
+  position: relative;
+  color: $red-ff;
+}
+
+.totalDiscounted {
+  text-decoration: line-through;
+}
+
+.totalDiscountAmount {
+  position: absolute;
+  bottom: 100%;
+  left: 100%;
+  width: 2.25rem;
+  font-size: 0.8rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: $red-ff;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitContainer {
+  grid-area: submit;
+}
+
+.submit {
+  background: $yellow-ff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-family: Orkney;
+  cursor: pointer;
+  transition: 100ms background;
+  display: inline-grid;
+  grid-auto-flow: column;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 0.5rem;
+  font-size: 1rem;
+
+  &:hover {
+    background: darken($yellow-ff, 5%);
+  }
+}
+
+.submitIcon {
+  width: 1.25rem;
+}
+
+.chat {
+  grid-area: chat;
+}
