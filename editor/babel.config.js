@@ -8,6 +8,7 @@ module.exports = api => {
       ["@babel/preset-typescript", {allExtensions: true, isTSX: true}],
     ],
     plugins: [
+      ["@babel/plugin-transform-react-jsx", {throwIfNamespace: false}],
       // "@babel/plugin-syntax-dynamic-import",
       // "@babel/proposal-class-properties",
       // "@babel/proposal-object-rest-spread",

@@ -2,7 +2,6 @@ import React, {FC, Suspense, lazy} from "react";
 import "tippy.js/dist/tippy.css";
 
 import {CreatorProps} from "./app.types";
-import {ReactComponent as Logo} from "./logo.svg";
 import "./index.scss";
 
 const Loader: FC = () => (
@@ -21,7 +20,6 @@ const Loader: FC = () => (
       alignItems: "center",
     }}
   >
-    <Logo height="4rem" />
     <div style={{fontSize: "1rem"}}>Chargement de l'éditeur…</div>
   </div>
 );

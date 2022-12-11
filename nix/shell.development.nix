@@ -26,10 +26,16 @@ let
     PORT=${port 1} cargo watch -x run
   '';
 
+  editor-launcher = pkgs.writeShellScriptBin "editor-start" ''
+    cd "$WORKDIR/editor"
+    PORT=${port 2} yarn start
+  '';
+
   procfile = overmind.mkProcfile ''
     postgres: ${postgres.launcher}
     admin: ${admin-launcher}/bin/admin-start
     server: ${server-launcher}/bin/server-start
+    editor: ${editor-launcher}/bin/editor-start
   '';
 
 in

@@ -12,6 +12,6 @@ in
   ];
   shellHook = ''
     export NODE_ENV="${env}"
-    export PATH="$WORKDIR/node_modules/.bin/:$PATH"
+    export PATH="$WORKDIR/editor/node_modules/.bin/:$PATH"
   '';
 }

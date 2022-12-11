@@ -9,10 +9,8 @@ import customControl from "./custom-control";
 import {AsyncContextProvider} from "./async";
 import {CanvasContextProvider, CanvasSpinner, PopoverContextProvider} from "./canvas";
 import {OrderContextProvider} from "./order";
-import {ReactComponent as Logo} from "./logo.svg";
 import {CreatorProps} from "./app.types";
 import {Stepper} from "./stepper";
-import Trustpilot from "./trustpilot";
 import smallDeviceWarning from "./small-device-warning.png";
 
 import cs from "./app.module.scss";
@@ -36,19 +34,7 @@ fabric.Image.prototype.getSvgSrc = function (options) {
 };
 
 const Header: FC = () => {
-  useEffect(() => {
-    const el = document.createElement("script");
-    el.src = "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-    el.async = true;
-    document.head.append(el);
-  }, []);
-
-  return (
-    <header className={cs.header}>
-      <Logo className={cs.logo} />
-      <Trustpilot />
-    </header>
-  );
+  return <header className={cs.header}>Creator</header>;
 };
 
 const App: FC<CreatorProps> = props => {
